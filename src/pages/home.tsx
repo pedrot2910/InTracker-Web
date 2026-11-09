@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Bell, Newspaper, Search, MapPin } from "lucide-react";
+import { CampusMap } from "../components/intracker/Map";
 import { NewsCard, newsItems } from "../components/intracker/NewsCard";
 import { BottomNav } from "../components/intracker/BottomNav";
+import { LiveBadge } from "../components/intracker/LiveBadge";
+import { useBusSocket } from "../hooks/useBusSocket";
 import logo from "../assets/logo.png";
-
-const MAP_SRC =
-  "https://www.openstreetmap.org/export/embed.html?bbox=-46.6450%2C-23.5720%2C-46.6100%2C-23.5460&layer=mapnik";
 
 type MobileTab = "news" | "map";
 
 export default function HomePage() {
   const [mobileTab, setMobileTab] = useState<MobileTab>("map");
+  const { bus, status, isStale } = useBusSocket("IntraCampus");
 
   return (
     <div className="min-h-screen bg-background md:grid md:h-screen md:grid-rows-[auto_minmax(0,1fr)] md:overflow-hidden">
@@ -28,7 +29,7 @@ export default function HomePage() {
         </div>
         <button
           aria-label="Notificações"
-          className="shrink-0 text-secondary/90"
+          className="shrink-0 text-secondary/90 hover:bg-secondary/20 rounded-full transition-colors right-5 top-5 h-12 w-12 grid place-items-center"
         >
           <Bell className="h-6 w-6" strokeWidth={1.8} />
         </button>
@@ -45,7 +46,7 @@ export default function HomePage() {
             />
           </div>
           <button aria-label="Notificações" className="shrink-0 relative">
-            <div className="grid h-9 w-9 place-items-center rounded-full hover:bg-primary/10 hover:text-secondary active:bg-primary text-primary/90">
+            <div className="grid h-9 w-9 place-items-center rounded-full hover:bg-primary/10 active:bg-primary">
               <Bell
                 className="h-4 w-4 text-primary active:text-secondary"
                 strokeWidth={1.8}
@@ -86,11 +87,20 @@ export default function HomePage() {
 
       {/* Desktop: noticias e mapa */}
       <div className="hidden md:grid md:min-h-0 md:grid-cols-[minmax(320px,30%)_1fr]">
-        <aside className="flex min-h-0 min-w-0 flex-col bg-cream px-5 py-5">
-          <h1 className="flex items-center gap-2 text-2xl font-bold text-primary">
-            <Newspaper className="h-6 w-6" strokeWidth={1.8} />
-            Notícias
-          </h1>
+        <aside className="flex min-h-0 min-w-0 flex-col bg-background px-5 py-5">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary">
+              <Newspaper className="h-6 w-6 text-secondary" strokeWidth={1.8} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight text-primary">
+                Notícias
+              </h1>
+              <p className="text-sm text-primary/50">
+                Fique por dentro das últimas novidades do IntraCampus
+              </p>
+            </div>
+          </div>
           <div className=" scrollbar-thin scrollbar-track-secondary/10 scrollbar-thumb-secondary-text/30 mt-5 min-h-0 flex-1 space-y-5 overflow-y-auto pr-1">
             {newsItems.map((item) => (
               <NewsCard key={item.title} {...item} />
@@ -101,13 +111,9 @@ export default function HomePage() {
           </div>
         </aside>
 
-        <div className="relative min-w-0">
-          <iframe
-            title="Mapa das rotas do Campus"
-            src={MAP_SRC}
-            className="h-full w-full border-0"
-            loading="lazy"
-          />
+        <div className="relative">
+          <LiveBadge status={status} isStale={isStale} bus={bus} />
+          <CampusMap bus={bus} className="w-full h-full" />
         </div>
       </div>
 
@@ -115,12 +121,8 @@ export default function HomePage() {
       <main className="md:hidden">
         {mobileTab === "map" && (
           <div className="relative h-[calc(100vh-170px)] pb-8">
-            <iframe
-              title="Mapa das rotas do Campus"
-              src={MAP_SRC}
-              className="h-full w-full border-0"
-              loading="lazy"
-            />
+            <LiveBadge status={status} isStale={isStale} bus={bus} />
+            <CampusMap bus={bus} className="w-full h-full" />
           </div>
         )}
 

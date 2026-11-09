@@ -11,7 +11,7 @@ type Props = {
 
 export function ContentShell({ children, icon, title }: Props) {
   return (
-    <div className="min-h-screen bg-secondary pb-28 md:pb-0">
+    <div className="min-h-screen bg-background pb-28 md:pb-0">
       {/* Header desktop */}
       <header className="hidden items-center justify-between gap-4 bg-primary px-6 py-3 md:flex">
         <div className="flex min-w-0 items-center gap-3">
@@ -26,7 +26,7 @@ export function ContentShell({ children, icon, title }: Props) {
         </div>
         <button
           aria-label="Notificações"
-          className="shrink-0 text-secondary/90"
+          className="shrink-0 text-secondary/90 hover:bg-secondary/20 rounded-full transition-colors right-5 top-5 h-12 w-12 grid place-items-center"
         >
           <Bell className="h-6 w-6" strokeWidth={1.8} />
         </button>

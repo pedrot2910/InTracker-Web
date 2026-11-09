@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { User, Mail, GraduationCap, Bus, LogOut } from "lucide-react";
+import { User, Mail, GraduationCap, LogOut } from "lucide-react";
 import { ContentShell } from "../components/intracker/ContentShell";
 
 const dados = [
   { icon: User, label: "Nome", value: "João da Silva" },
   { icon: Mail, label: "E-mail", value: "joão.silva@alu.ufc.br" },
   { icon: GraduationCap, label: "Curso", value: "Engenharia da Computação" },
-  { icon: Bus, label: "Rota favorita", value: "Linha Centro" },
 ];
 
 export default function ProfilePage() {
@@ -20,7 +19,7 @@ export default function ProfilePage() {
           JS
         </div>
         <div className="min-w-0">
-          <h2 className="font-display text-lg font-bold">João da Silva</h2>
+          <h2 className="font-display text-lg font-bold">João da Silva</h2>
           <p className="text-xs text-secondary/80"> Matrícula 546789</p>
         </div>
       </section>
@@ -33,9 +32,7 @@ export default function ProfilePage() {
             />
             <div className="min-w-0">
               <p className="text-xs text-secondary font-bold">{label}</p>
-              <p className="truncate text-sm font-medium text-secondary/70">
-                {value}
-              </p>
+              <p className="truncate text-sm text-secondary/80">{value}</p>
             </div>
           </div>
         ))}

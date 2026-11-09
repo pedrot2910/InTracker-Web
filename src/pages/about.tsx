@@ -37,7 +37,7 @@ export default function AboutPage() {
       {recursos.map(({ icon: Icon, title, body }) => (
         <article
           key={title}
-          className="flex gap-4 rounded-2xl border border-secondary bg-secondary"
+          className="flex gap-4 rounded-2xl border border-secondary bg-secondary p-4"
         >
           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-secondary">
             <Icon className="h-5 w-5" strokeWidth={1.8} />

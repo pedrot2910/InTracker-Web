@@ -1,3 +1,34 @@
+# Variáveis de ambiente (segredos e URLs por ambiente)
+.env
+.env.*
+!.env.example
+
+# Build e cache
+dist
+dist-ssr
+*.tsbuildinfo
+.vite
+.eslintcache
+.cache
+.parcel-cache
+
+# Testes e cobertura
+coverage
+playwright-report
+test-results
+
+# Deploy
+.vercel
+.netlify
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Chaves e certificados (por segurança)
+*.pem
+*.key
+
 # Logs
 logs
 *.log

@@ -10,7 +10,7 @@ const items = [
 
 export function BottomNav() {
   return (
-    <nav className="mx-auto flex w-full max-w-sm items-center justify-around rounded-full border border-primary/40 bg-secondary/70 px-3 py-2 shadow-lg backdrop-blur">
+    <nav className=" mx-auto flex w-full max-w-sm items-center justify-around rounded-full border border-primary/40 bg-secondary/70 px-3 py-2 shadow-lg backdrop-blur">
       {items.map(({ icon: Icon, label, to }) => (
         <NavLink
           key={label}
