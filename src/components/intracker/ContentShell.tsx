@@ -42,10 +42,16 @@ export function ContentShell({ children, icon, title }: Props) {
 
       {/* Content */}
       <main className="mx-auto w-full max-w-3xl px-4 py-6 md:px-8">
-        <h1 className="hidden items-center gap-2 text-2xl font-bold text-primary md:flex">
-          {icon}
-          {title}
-        </h1>
+        <div className="flex items-center gap-3">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-secondary shadow-lg">
+            {icon}
+          </div>
+          <div>
+            <h1 className="hidden items-center gap-2 text-2xl font-bold text-primary md:flex">
+              {title}
+            </h1>
+          </div>
+        </div>
         <div className="mt-5 space-y-5 md:mt-6">{children}</div>
       </main>
 

@@ -89,7 +89,7 @@ export default function HomePage() {
       <div className="hidden md:grid md:min-h-0 md:grid-cols-[minmax(320px,30%)_1fr]">
         <aside className="flex min-h-0 min-w-0 flex-col bg-background px-5 py-5">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary shadow-lg">
               <Newspaper className="h-6 w-6 text-secondary" strokeWidth={1.8} />
             </div>
             <div>

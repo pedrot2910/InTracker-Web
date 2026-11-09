@@ -24,7 +24,7 @@ export function LiveBadge({ status, isStale, bus }: Props) {
       absolute right-4 top-4 z-[1000]
       flex items-center gap-2
       rounded-full
-      border border-border/60
+      border border-primary/70
       bg-background/95
       px-4 py-2
       text-xs font-semibold text-text

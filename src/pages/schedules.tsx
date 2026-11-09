@@ -15,7 +15,7 @@ const rotas = [
   },
   {
     parada: "Cadeia Criativa",
-    ponto: "Rua Desembargador Moreira da Rocha, 1030, Centro",
+    ponto: "Rº Desembargador Moreira da Rocha, 1030, Centro",
     horarios: ["06:00", "13:15", "19:05"],
   },
 ];
